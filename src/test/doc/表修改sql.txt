@@ -1,0 +1,30 @@
+示例
+查看列：desc 表名;
+修改表名：alter table t_book rename to bbb;
+添加列：alter table 表名 add column 列名 varchar(30);
+删除列：alter table 表名 drop column 列名;
+修改列名MySQL： alter table bbb change nnnnn hh int;
+修改列名SQLServer：exec sp_rename't_student.name','nn','column';
+修改列名Oracle：alter table bbb rename column nnnnn to hh int;
+修改列属性：alter table t_book modify name varchar(22);
+
+
+############2016-10-17###########
+alter table product_info add column Deposits_Flag varchar(2) comment '是否计算活期利率' after Jx_Type ;
+
+alter table trade_detail_info add column excel_Id varchar(50) comment 'excel文件批次' after Opr_Redeem_Remark;
+alter table trade_detail_info add column image_Id varchar(50) comment '客户信息镜像文件' after Opr_Redeem_Remark;
+alter table trade_detail_info add column import_Id varchar(30) comment '批量文件导入人id区分单条手工录入无该信息' after Opr_Redeem_Remark;
+alter table trade_detail_info add column import_Date varchar(20) comment '导入人导入excel数据日期' after Opr_Redeem_Remark;
+
+############2016-10-24###########
+ALTER TABLE `study`.`sys_resource` CHANGE COLUMN `resource_value` `resource_value` VARCHAR(200) NULL DEFAULT NULL ;
+
+############2016-10-29###########
+ALTER TABLE `study`.`comm_data_privilege` CHANGE COLUMN `User_Id` `Staff_Id` VARCHAR(30) NULL DEFAULT NULL COMMENT '用户Id' ;
+ALTER TABLE `study`.`comm_data_privilege`
+CHANGE COLUMN `Atrribute_Id` `Attribute_Id` VARCHAR(30) NULL DEFAULT NULL COMMENT '数据权限属性ID' ,
+CHANGE COLUMN `Atrribute_Remark` `Attribute_Remark` VARCHAR(100) NULL DEFAULT NULL COMMENT '属性备注' ;
+
+############2016-11-05###########
+alter table opt_log_info add column Opr_Sql_Type varchar(50) comment 'SELECT_UPDATE_INSERT_DELETE' after Opr_Sql;

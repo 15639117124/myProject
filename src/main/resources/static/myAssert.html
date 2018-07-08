@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的资产</title>
+    <link rel="stylesheet" href="assets/css/dpl-min.css">
+    <link rel="stylesheet" href="assets/css/bui-min.css">
+    <link rel="stylesheet" href="custom/css/custom-min.css">
+    <!--<link href="http://g.alicdn.com/bui/bui/1.1.21/css/bs3/dpl.css" rel="stylesheet">-->
+    <!--<link href="http://g.alicdn.com/bui/bui/1.1.21/css/bs3/bui.css" rel="stylesheet">-->
+    <style>
+        fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid silver
+        }
+
+        legend {
+            padding: .5em;
+            border: 0;
+            width: auto;
+            margin: 0;
+        }
+
+        .field-span {
+            margin-top: -25px;
+        }
+.main-span{
+    margin-left: 30px;
+}
+        .main-span table td {
+            border: none;
+
+        }
+
+        .x-caret-down {
+            margin-left: 20px;
+        }
+
+        .chart {
+            margin: 20px;
+            /*float: left;*/
+            /*width: 600px;*/
+            background-color: #E8E8E8;
+
+        }
+.chart-special{
+    width: 600px;
+    height: 370px;
+    background-color: #E8E8E8;
+}
+        .time-cut span {
+            height: 12px;
+            line-height: 12px;
+            font-size: 12px;
+        }
+        .panel  .panel-header .panel-primary{
+            background-color:  #6cb5f4;
+            /*text-align: center;*/
+        }
+
+        .chart-container {
+            position: relative;
+            min-height: 270px;
+        }
+        .chart-container:nth-child(4){
+            margin-top: 20px;
+        }
+        .chart-container:nth-child(5){
+            margin-top: 20px;
+        }
+        .chart-container:nth-child(6){
+            margin-top: 20px;
+        }
+        .select-area {
+            position: absolute;
+            z-index: 1000;
+            right: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="row-fluid">
+    <div class="span16 main-span">
+        <div class="panel" id="oftitle">
+            <div class="panel-header  panel-info">
+                <h3 id="ontitle" class="titll"></h3>
+            </div>
+        </div>
+        <div class="panel ">
+            <div class="panel-header  panel-info   ">
+                <h3 class="panel-primary">金融资产</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>金融资产总规模(万元)：</td>
+                        <td id="asset" colspan="5"><a href="../../customer/tbCustomer.html?"></a></td>
+                    </tr>
+                    <tr>
+                        <td>线上规模(万元)：</td>
+                        <td id="onlineAsset"></td>
+                        <td>线上周到期(万元)：</td>
+                        <td id="onlineRecent"></td>
+                        <td>线上闲置资产(万元)：</td>
+                        <td id="onlieBanlance" ></a></td>
+                    </tr>
+                    <tr>
+                        <td>线下规模(万元)：</td>
+                        <td id="offlineAsset"></td>
+                        <td>线下周到期(万元)：</td>
+                        <td id="offlineRecent" colspan="3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-header  ">
+                <h3  class="panel-primary">我的客户</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>  总客户数(个)：</td>
+                        <td id="sumCustomer"><a href="../../customer/tbCustomer.html"></a></td>
+                        <td>一级客户数(个)：</td>
+                        <td id="Level_OneCustomer"><a href="../../customer/tbCustomer.html?mes=level_one"></a></td>
+                        <td>二级客户数(个)：</td>
+                        <td id="Level_TwoCustomer"><a href="../../customer/tbCustomer.html?mes=level_two"></a></td>
+                    </tr>
+                    <tr>
+                        <td>有效客户数(个)：</td>
+                        <td id="effective_customer"><a href="../../customer/tbCustomer.html?mes=effective"></a></td>
+                        <td>流失客户数(个)：</td>
+                        <td id="flow_customer"><a href="../../customer/tbCustomer.html?mes=flow"></a></td>
+                        <td>未绑卡客户数(个)：</td>
+                        <td id="noCard_customer"><a href="../../customer/tbCustomer.html?mes=nocard"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-header ">
+                <h3  class="panel-primary">我的分析</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <div class="chart-container">
+
+                        <div class="select-area">
+                            <select name="" id="lineChart_one">
+                                <option value="week">周</option>
+                                <option value="month">月</option>
+                                <option value="quarter">季</option>
+                                <option value="year">年</option>
+                            </select>
+                        </div>
+
+                        <div id="c1" style="height: 400px" class="chart">
+
+                        </div>
+                    </div>
+                    <div class="chart-container">
+
+                        <div class="select-area">
+                            <select name="" id="lineChart_two">
+                                <option value="week">周</option>
+                                <option value="month">月</option>
+                                <option value="quarter">季</option>
+                                <option value="year">年</option>
+                            </select>
+                        </div>
+                        <div id="c2" style="height: 400px" class="chart">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-container">
+
+                        <div class="select-area">
+                            <select name="" id="averageDaily">
+                                <option value="month">月</option>
+                                <option value="quarter">季</option>
+                                <option value="year">年</option>
+                            </select>
+                        </div>
+
+                        <div id="b4" style="height: 400px" class=" chart">
+
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+
+                        <div class="select-area">
+                            <select name="" id="coluChart_one">
+                                <option value="week">周</option>
+                                <option value="month">月</option>
+                                <option value="quarter">季</option>
+                                <option value="year">年</option>
+                            </select>
+                        </div>
+
+                        <div id="b2" style="height: 400px" class=" chart" >
+
+                        </div>
+
+                    </div>
+                    <div class="chart-container">
+
+                        <div class="select-area">
+                            <select name="" id="coluChart_two">
+                                <option value="week">周</option>
+                                <option value="month">月</option>
+                                <option value="quarter">季</option>
+                                <option value="year">年</option>
+                            </select>
+                        </div>
+
+                    <div id="b3" style="height: 400px" class=" chart">
+
+                    </div>
+                </div>
+                    <div class="chart-container">
+
+                        <!--<div class="select-area">-->
+                        <!--&lt;!&ndash;<select name="" id="cakeChart">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="1"></option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="2"></option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="3"></option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="4"></option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                        <!--</div>-->
+
+                        <div id="b1" style="height: 400px" class="chart">
+
+                        </div>
+
+                    </div>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="span8 field-span">
+        <div class="panel">
+            <fieldset>
+                <legend>生日提醒</legend>
+                <table  class="table table-striped table-head-bordered table-bordered">
+                    <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>生日<span class="x-caret x-caret-down"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="company_content">
+
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    线上到期提醒
+                    <span class="time-cut">
+                        <span id="online_oneWeek"  onclick="clikWeek(7)" class="button button-info">一周</span>
+                        <span id="onlie_twoWeeks" onclick="clikWeek(14)" class="button button-info">两周</span>
+                    </span>
+                </legend>
+                <table class="table table-striped table-head-bordered table-bordered">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>到期<span class="x-caret x-caret-down"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="onlineDue">
+
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    线下到期提醒
+                    <span class="time-cut">
+                        <span id="offline_oneWeek" onclick="off_click_week(7)" class="button button-info">一周</span>
+                        <span id="offlie_twoWeeks" onclick="off_click_week(14)" class="button button-info">两周</span>
+                    </span>
+                </legend>
+                <table class="table table-striped table-head-bordered table-bordered">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>到期<span class="x-caret x-caret-down"></span></th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="offlineDue">
+
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+    </div>
+</div>
+</div>
+<!-- bui 脚本库引入 ，使用loader按需加载模式 -->
+<script type="text/javascript" src="assets/jquery-1.8.1.min.js"></script>
+
+<script type="text/javascript" src="assets/seed-min.js"></script>
+<script type="text/javascript" src="js/customer/customerAttribution.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script src="assets/g2.js"></script>
+<script src="assets/echarts.common.min.js"></script>
+<script type="text/javascript" src="../js/myAssert.js"></script>
+<script type="text/javascript">
+
+
+
+</script>
+
+
+</body>
+</html>
